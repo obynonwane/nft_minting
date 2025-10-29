@@ -33,7 +33,7 @@ contract BasicNft is ERC721 {
 
     function tokenURI(
         uint256 tokenId
-    ) public pure override returns (string memory) {
-        return "https://dxrg-02.nyc3.cdn.digitaloceanspaces.com/metadata/1684";
+    ) public view override returns (string memory) {
+        return s_tokenIdToUri[tokenId];
     }
 }
