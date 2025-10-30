@@ -67,3 +67,5 @@ $ cast --help
 
 install openzepplin
 forge install OpenZeppelin/openzeppelin-contracts --no-commit
+
+// script files for deploying and interacting with the smart contract
