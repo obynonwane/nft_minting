@@ -36,8 +36,20 @@ contract MintBasicNft is Script {
      */
     function run() external {
         // Look up the latest deployed BasicNft address from broadcast artifacts.
-        address mostRecentDeployedContract = DevOpsTools
-            .get_most_recent_deployment("BasicNft", block.chainid);
+        // Mint a token on the found contract address.
+        // Prefer an explicit address provided through an environment variable
+        // (useful for broadcast runs where reading local `./broadcast` artifacts
+        // via vm.readDir/readFile is not permitted). If the env var is not set,
+        // fall back to parsing `./broadcast` artifacts (works during dry-runs).
+        address mostRecentDeployedContract = vm.envAddress("BASIC_NFT_ADDRESS");
+
+        if (mostRecentDeployedContract == address(0)) {
+            // Only attempt to read local broadcast artifacts when no env var is set.
+            mostRecentDeployedContract = DevOpsTools.get_most_recent_deployment(
+                    "BasicNft",
+                    block.chainid
+                );
+        }
 
         // Mint a token on the found contract address.
         mintNftOnContract(mostRecentDeployedContract);
