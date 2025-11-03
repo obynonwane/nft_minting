@@ -16,7 +16,9 @@ contract ModifyNftTest is Test {
         moodNft = new MoodNft(SAD_SVG_URI, HAPPY_SVG_URI);
     }
 
+    // Token URi is different from Image URI
     function testViewTokenURI() public {
+        console.log(USER);
         vm.prank(USER);
         moodNft.mintNft();
         console.log(moodNft.tokenURI(0));
