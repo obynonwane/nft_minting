@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 import {Test, console} from "forge-std/Test.sol";
-import {MoodNft} from "../src/MoodNft.sol";
+import {MoodNft} from "../../src/MoodNft.sol";
 
 contract ModifyNftTest is Test {
     MoodNft moodNft;

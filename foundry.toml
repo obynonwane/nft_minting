@@ -5,4 +5,11 @@ libs = ["lib"]
 remappings = ['@openzeppelin=lib/openzeppelin-contracts']
 ffi = true
 
+# File system permissions for scripts/tests
+# Use inline array syntax for fs_permissions
+fs_permissions = [
+    { access = "read", path = "./img/" },
+    { access = "read", path = "./broadcast/" },
+]
+
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
